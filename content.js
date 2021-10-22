@@ -1,17 +1,32 @@
+const getCurrentImage = {
+  "vk.com": () => {
+    const imageDiv = document.getElementById("pv_photo");
+    if (imageDiv) {
+      return imageDiv.querySelector("img").src.slice(0);
+    }
+    return null;
+  },
+  "discord.com": () => {
+    // Close sticker dialog bound to Ctrl+S immediately
+    document.querySelector('[class^="stickerIcon"]').parentNode.parentNode.parentNode.click()
+
+    const imageDiv = document.querySelector('[class^="imageWrapper"]');
+    if (imageDiv){
+      return imageDiv.getElementsByTagName("img")[0].src.split('?')[0];
+    }
+    return null;
+  }
+}
+
 document.addEventListener("keydown", function(e) {
   if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)
       && e.keyCode == 83) {
     e.preventDefault();
 
-    let download_url = null;
+    let downloadUrl = getCurrentImage[window.location.hostname]();
 
-    let photo_div = document.getElementById("pv_photo");
-    if (photo_div) {
-      download_url = photo_div.querySelector("img").src;
-    }
-
-    if (download_url) {
-      chrome.extension.sendMessage({url: download_url.slice(0)}, function() {});
+    if (downloadUrl) {
+      chrome.extension.sendMessage({url: downloadUrl}, function() {});
     }
   }
 }, false);
