@@ -1,6 +1,20 @@
-# VkSave
+# CtrlSave
 
-Расширение для Chrome для сохранения изображений с vk.com нажатием на Ctrl+S
+Chrome extension for saving images from various sites by pressing Ctrl+S lightly
+
+Currently supported sites are:
+
+- vk.com
+- discord.com
+
+---
+
+Расширение для Chrome для сохранения изображений с различных сайтов лёгким нажатием на Ctrl+S
+
+На данный момент поддерживаются:
+
+- vk.com
+- discord.com
 
 ## Установка
 

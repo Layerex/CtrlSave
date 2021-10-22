@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "VkSave",
-  "short_name": "VkSave",
+  "name": "CtrlSave",
+  "short_name": "CtrlSave",
   "author": "Layerex",
-  "description": "Сохраняйте изображения с vk.com лёгким нажатием на Ctrl+S",
-  "homepage_url": "https://github.com/Layerex/vksave",
+  "description": "Save images from various sites by pressing Ctrl+S lightly",
+  "homepage_url": "https://github.com/Layerex/ctrlsave",
   "version": "0.0.1",
   "permissions": [
     "downloads",
