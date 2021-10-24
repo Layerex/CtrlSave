@@ -10,9 +10,15 @@ const getCurrentImage = {
     // Close sticker dialog bound to Ctrl+S immediately
     document.querySelector('[class^="stickerIcon"]').parentNode.parentNode.parentNode.click()
 
-    const imageDiv = document.querySelector('[class^="imageWrapper"]');
-    if (imageDiv){
-      return imageDiv.getElementsByTagName("img")[0].src.split('?')[0];
+    const imageDivs = document.querySelectorAll('[class^="imageWrapper"]');
+    for (let i = 0; i < imageDivs.length; ++i) {
+      const imageDiv = imageDivs.item(i)
+      if (imageDiv){
+        const image = imageDiv.getElementsByTagName("img")[0];
+        if (image) {
+          return image.src.split('?')[0];
+        }
+      }
     }
     return null;
   }
@@ -23,7 +29,7 @@ document.addEventListener("keydown", function(e) {
       && e.keyCode == 83) {
     e.preventDefault();
 
-    let downloadUrl = getCurrentImage[window.location.hostname]();
+    const downloadUrl = getCurrentImage[window.location.hostname]();
 
     if (downloadUrl) {
       chrome.extension.sendMessage({url: downloadUrl}, function() {});
