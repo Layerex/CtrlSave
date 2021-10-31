@@ -1,11 +1,17 @@
 # CtrlSave
 
-Chrome extension for saving images from various sites by pressing Ctrl+S lightly
+Chrome extension for saving images from various sites by pressing Ctrl+S lightly.
 
 Currently supported sites are:
 
-- vk.com
-- discord.com
+- vk.com (images, stories)
+- discord.com (images)
+
+# Installation
+
+- Clone this repository
+- Enable `Developer mode` in Chrome `Extensions` tab
+- Press `Load Unpacked` button and specify directory with extension
 
 ---
 
@@ -13,11 +19,13 @@ Currently supported sites are:
 
 На данный момент поддерживаются:
 
-- vk.com
-- discord.com
+- vk.com (изображения, истории)
+- discord.com (изображения)
+
+Почему-то, чтобы сохранить историю из VK нужно нажать Ctrl+S дважды. Скорее всего, скрипты ВК останавливают событие, вот только не могу понять где.
 
 ## Установка
 
 - Склонируйте репозиторий
-- Включите режим разработчика во вкладке Extensions Chrome 
-- Нажмите на кнопку Load Unpacked и укажите директорию с расширением
+- Включите `Режим разработчика` во вкладке `Extensions` Chrome
+- Нажмите на кнопку `Load Unpacked` и укажите директорию с расширением
