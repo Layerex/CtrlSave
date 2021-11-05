@@ -4,7 +4,7 @@ Chrome extension for saving images from various sites by pressing Ctrl+S lightly
 
 Currently supported sites are:
 
-- vk.com (images, stories)
+- vk.com (images, stories, gifs)
 - discord.com (images)
 
 # Installation
@@ -19,7 +19,7 @@ Currently supported sites are:
 
 На данный момент поддерживаются:
 
-- vk.com (изображения, истории)
+- vk.com (изображения, истории, гифки)
 - discord.com (изображения)
 
 Почему-то, чтобы сохранить историю из VK нужно нажать Ctrl+S дважды. Скорее всего, скрипты ВК останавливают событие, вот только не могу понять где.

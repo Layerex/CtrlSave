@@ -4,9 +4,14 @@ const getCurrentImage = {
     if (storyVideo) {
       return storyVideo.src;
     } else {
-      const imageDiv = document.getElementById("pv_photo");
-      if (imageDiv) {
-        return imageDiv.querySelector("img").src.slice(0);
+      const gifVideo = document.getElementsByClassName("pages_gif_img")[0];
+      if (gifVideo) {
+        return gifVideo.src;
+      } else {
+        const imageDiv = document.getElementById("pv_photo");
+        if (imageDiv) {
+          return imageDiv.querySelector("img").src.slice(0);
+        }
       }
     }
     return null;
