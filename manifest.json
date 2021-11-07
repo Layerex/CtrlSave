@@ -3,8 +3,8 @@
   "name": "CtrlSave",
   "short_name": "CtrlSave",
   "author": "Layerex",
-  "description": "Save images from various sites by pressing Ctrl+S lightly",
-  "homepage_url": "https://github.com/Layerex/ctrlsave",
+  "description": " Save images from various sites by pressing Ctrl+S lightly. Сохраняйте изображения с различных сайтов лёгким нажатием на Ctrl+S.",
+  "homepage_url": "https://github.com/Layerex/CtrlSave",
   "version": "0.0.1",
   "permissions": [
     "downloads",
