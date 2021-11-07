@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(function() {
       {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlMatches: '(vk.com|discord.com|app.element.io)' }
+            pageUrl: { urlMatches: '.*' }
           })
         ],
         actions: [new chrome.declarativeContent.ShowPageAction()]

@@ -41,12 +41,37 @@ const getCurrentImage = {
   }
 }
 
+// Sites, where video is undownloadable by regular means
+const videoDownloadBlacklist = [
+  "vk.com",
+]
+
+function isVideoPlaying(video) {
+  return video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
+}
+
+function getCurrentlyPlayingVideo() {
+  const videos = document.getElementsByTagName("video");
+  for (let i = 0; i < videos.length; ++i) {
+    const video = videos.item(i);
+    if (isVideoPlaying(video)) {
+      return video.src;
+    }
+  }
+  return null
+}
+
 document.addEventListener("keydown", function(e) {
   if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)
       && e.keyCode == 83) {
     e.preventDefault();
 
-    const downloadUrl = getCurrentImage[window.location.hostname]();
+    let downloadUrl = getCurrentImage[window.location.hostname]();
+
+    if (!downloadUrl) {
+      downloadUrl = getCurrentlyPlayingVideo();
+    }
+    console.log(downloadUrl)
 
     if (downloadUrl) {
       chrome.extension.sendMessage({url: downloadUrl}, function() {});
