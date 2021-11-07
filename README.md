@@ -10,7 +10,7 @@ Currently supported sites are:
 
 Also currently played video will be downloaded on any site with simple html5 videos with correct `src` attribute.
 
-# Installation
+## Installation
 
 - Clone this repository
 - Enable `Developer mode` in Chrome `Extensions` tab
