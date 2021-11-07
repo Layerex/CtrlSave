@@ -9,8 +9,7 @@
   "permissions": [
     "downloads",
     "declarativeContent",
-    "*://*.vk.com/*",
-    "*://*.userapi.com/*"
+    "*://*/*"
   ],
   "background": {
     "scripts": ["background.js"],
