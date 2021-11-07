@@ -31,6 +31,13 @@ const getCurrentImage = {
       }
     }
     return null;
+  },
+  "app.element.io": () => {
+    const image = document.getElementsByClassName("mx_ImageView_image")[0];
+    if (image) {
+      return image.src;
+    }
+    return null;
   }
 }
 
