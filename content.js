@@ -1,4 +1,4 @@
-const getCurrentImage = {
+const getCurrentElement = {
   "vk.com": () => {
     const storyVideo = document.getElementsByClassName("stories_video")[0];
     if (storyVideo) {
@@ -75,12 +75,13 @@ document.addEventListener(
     ) {
       e.preventDefault();
 
-      let downloadUrl = getCurrentImage[window.location.hostname]();
-
+      let downloadUrl = null;
+      if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
+        downloadUrl = getCurrentElement[window.location.hostname]()
+      }
       if (!downloadUrl) {
         downloadUrl = getCurrentlyPlayingVideo();
       }
-      console.log(downloadUrl);
 
       if (downloadUrl) {
         chrome.extension.sendMessage({ url: downloadUrl }, function () {});
