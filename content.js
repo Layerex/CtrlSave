@@ -18,15 +18,17 @@ const getCurrentImage = {
   },
   "discord.com": () => {
     // Close sticker dialog bound to Ctrl+S immediately
-    document.querySelector('[class^="stickerIcon"]').parentNode.parentNode.parentNode.click()
+    document
+      .querySelector('[class^="stickerIcon"]')
+      .parentNode.parentNode.parentNode.click();
 
     const imageDivs = document.querySelectorAll('[class^="imageWrapper"]');
     for (let i = 0; i < imageDivs.length; ++i) {
-      const imageDiv = imageDivs.item(i)
-      if (imageDiv){
+      const imageDiv = imageDivs.item(i);
+      if (imageDiv) {
         const image = imageDiv.getElementsByTagName("img")[0];
         if (image) {
-          return image.src.split('?')[0];
+          return image.src.split("?")[0];
         }
       }
     }
@@ -38,16 +40,19 @@ const getCurrentImage = {
       return image.src;
     }
     return null;
-  }
-}
+  },
+};
 
 // Sites, where video is undownloadable by regular means
-const videoDownloadBlacklist = [
-  "vk.com",
-]
+const videoDownloadBlacklist = ["vk.com"];
 
 function isVideoPlaying(video) {
-  return video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
+  return (
+    video.currentTime > 0 &&
+    !video.paused &&
+    !video.ended &&
+    video.readyState > 2
+  );
 }
 
 function getCurrentlyPlayingVideo() {
@@ -58,23 +63,29 @@ function getCurrentlyPlayingVideo() {
       return video.src;
     }
   }
-  return null
+  return null;
 }
 
-document.addEventListener("keydown", function(e) {
-  if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)
-      && e.keyCode == 83) {
-    e.preventDefault();
+document.addEventListener(
+  "keydown",
+  function (e) {
+    if (
+      (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
+      e.keyCode == 83
+    ) {
+      e.preventDefault();
 
-    let downloadUrl = getCurrentImage[window.location.hostname]();
+      let downloadUrl = getCurrentImage[window.location.hostname]();
 
-    if (!downloadUrl) {
-      downloadUrl = getCurrentlyPlayingVideo();
+      if (!downloadUrl) {
+        downloadUrl = getCurrentlyPlayingVideo();
+      }
+      console.log(downloadUrl);
+
+      if (downloadUrl) {
+        chrome.extension.sendMessage({ url: downloadUrl }, function () {});
+      }
     }
-    console.log(downloadUrl)
-
-    if (downloadUrl) {
-      chrome.extension.sendMessage({url: downloadUrl}, function() {});
-    }
-  }
-}, false);
+  },
+  false
+);
