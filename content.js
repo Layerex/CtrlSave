@@ -41,6 +41,12 @@ const getCurrentElement = {
     }
     return null;
   },
+  "2ch.hk": () => {
+    const imageDiv = document.getElementById("js-mv-main");
+    if(imageDiv) {
+      return imageDiv.getElementsByTagName("img")[0].src
+    }
+  }
 };
 
 // Sites, where video is undownloadable by regular means
