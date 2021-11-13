@@ -49,10 +49,10 @@ const getCurrentElement = {
   },
   "2ch.hk": () => {
     const imageDiv = document.getElementById("js-mv-main");
-    if(imageDiv) {
-      return imageDiv.getElementsByTagName("img")[0].src
+    if (imageDiv) {
+      return imageDiv.getElementsByTagName("img")[0].src;
     }
-  }
+  },
 };
 
 // Sites, where video is undownloadable by regular means
@@ -80,7 +80,7 @@ function getCurrentlyPlayingVideo() {
 
 document.addEventListener(
   "keydown",
-  function (e) {
+  function(e) {
     if (
       (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
       e.keyCode == 83
@@ -89,14 +89,14 @@ document.addEventListener(
 
       let downloadUrl = null;
       if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
-        downloadUrl = getCurrentElement[window.location.hostname]()
+        downloadUrl = getCurrentElement[window.location.hostname]();
       }
       if (!downloadUrl) {
         downloadUrl = getCurrentlyPlayingVideo();
       }
 
       if (downloadUrl) {
-        chrome.extension.sendMessage({ url: downloadUrl }, function () {});
+        chrome.extension.sendMessage({ url: downloadUrl }, function() { });
       }
     }
   },
