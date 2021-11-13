@@ -1,3 +1,11 @@
+function getElementByClassNameStart(classNameStart, node = document) {
+  return document.querySelector(`[class^="${classNameStart}"]`);
+}
+
+function getElementsByClassNameStart(classNameStart, node = document) {
+  return document.querySelectorAll(`[class^="${classNameStart}"]`);
+}
+
 const getCurrentElement = {
   "vk.com": () => {
     const storyVideo = document.getElementsByClassName("stories_video")[0];
@@ -18,11 +26,11 @@ const getCurrentElement = {
   },
   "discord.com": () => {
     // Close sticker dialog bound to Ctrl+S immediately
-    document
-      .querySelector('[class^="stickerIcon"]')
-      .parentNode.parentNode.parentNode.click();
+    getElementByClassNameStart(
+      "stickerIcon"
+    ).parentNode.parentNode.parentNode.click();
 
-    const imageDivs = document.querySelectorAll('[class^="imageWrapper"]');
+    const imageDivs = getElementsByClassNameStart("imageWrapper");
     for (let i = 0; i < imageDivs.length; ++i) {
       const imageDiv = imageDivs.item(i);
       if (imageDiv) {
