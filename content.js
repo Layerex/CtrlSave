@@ -1,9 +1,9 @@
 function getElementByClassNameStart(classNameStart, node = document) {
-  return document.querySelector(`[class^="${classNameStart}"]`);
+  return node.querySelector(`[class^="${classNameStart}"]`);
 }
 
 function getElementsByClassNameStart(classNameStart, node = document) {
-  return document.querySelectorAll(`[class^="${classNameStart}"]`);
+  return node.querySelectorAll(`[class^="${classNameStart}"]`);
 }
 
 const getCurrentElement = {
