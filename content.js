@@ -100,7 +100,6 @@ document.addEventListener(
       (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
       e.keyCode == 83
     ) {
-      e.preventDefault();
 
       let downloadUrl = null;
       if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
@@ -111,6 +110,7 @@ document.addEventListener(
       }
 
       if (downloadUrl) {
+        e.preventDefault();
         chrome.extension.sendMessage({ url: downloadUrl }, function() { });
       }
     }
