@@ -38,6 +38,21 @@ const getCurrentElement = {
         }
       }
     }
+
+    const avatarContainer =
+      getElementByClassNameStart("userPopout") ||
+      getElementByClassNameStart("topSection");
+    if (avatarContainer) {
+      const avatarDiv = getElementByClassNameStart(
+        "avatarStack",
+        avatarContainer
+      );
+      if (avatarDiv) {
+        const avatarUrl = avatarDiv.getElementsByTagName("img")[0].src;
+        return avatarUrl.split("?")[0] + "?size=4096";
+      }
+    }
+
     return null;
   },
   "app.element.io": () => {
