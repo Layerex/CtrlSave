@@ -6,6 +6,9 @@ function getElementsByClassNameStart(classNameStart, node = document) {
   return node.querySelectorAll(`[class^="${classNameStart}"]`);
 }
 
+// Return values:
+// - null - nothing to download
+// - "" - no manual downloading needed
 const getCurrentElement = {
   "vk.com": () => {
     const storyVideo = document.getElementsByClassName("stories_video")[0];
@@ -57,7 +60,7 @@ const getCurrentElement = {
   },
   "app.element.io": () => {
     document.getElementsByClassName("mx_ImageView_button_download")[0].click();
-    return null;
+    return "";
   },
   "2ch.hk": () => {
     const imageDiv = document.getElementById("js-mv-main");
@@ -102,13 +105,15 @@ document.addEventListener(
       if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
         downloadUrl = getCurrentElement[window.location.hostname]();
       }
-      if (!downloadUrl) {
+      if (downloadUrl === null) {
         downloadUrl = getCurrentlyPlayingVideo();
       }
 
-      if (downloadUrl) {
+      if (downloadUrl !== null) {
         e.preventDefault();
-        chrome.extension.sendMessage({ url: downloadUrl }, function() { });
+        if (downloadUrl !== "") {
+          chrome.extension.sendMessage({ url: downloadUrl }, function() { });
+        }
       }
     }
   },
