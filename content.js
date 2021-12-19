@@ -56,10 +56,7 @@ const getCurrentElement = {
     return null;
   },
   "app.element.io": () => {
-    const image = document.getElementsByClassName("mx_ImageView_image")[0];
-    if (image) {
-      return image.src;
-    }
+    document.getElementsByClassName("mx_ImageView_button_download")[0].click();
     return null;
   },
   "2ch.hk": () => {
