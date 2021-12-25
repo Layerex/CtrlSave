@@ -87,7 +87,17 @@ function getCurrentlyPlayingVideo() {
   for (let i = 0; i < videos.length; ++i) {
     const video = videos.item(i);
     if (isVideoPlaying(video)) {
-      return video.src;
+      if (video.src) {
+        return video.src;
+      } else {
+        const sources = video.getElementsByTagName("source");
+        for (source of sources) {
+          if (source.src) {
+            return source.src;
+          }
+        }
+        return null;
+      }
     }
   }
   return null;
