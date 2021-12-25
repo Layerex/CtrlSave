@@ -8,6 +8,7 @@ Currently supported sites are:
 - discord.com (images, avatars)
 - element.io (images)
 - 2ch.hk (images)
+- teddit.net (images)
 
 Also currently played video will be downloaded on any site with simple html5 videos with correct `src` attribute.
 
@@ -27,6 +28,7 @@ Also currently played video will be downloaded on any site with simple html5 vid
 - discord.com (изображения, аватарки)
 - element.io (изображения)
 - 2ch.hk (изображения)
+- teddit.net (изображения)
 
 Также будет загружено html5 видео с корректным аттрибутом `src`, проигрываемое в данный момент.
 
