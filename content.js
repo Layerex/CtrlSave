@@ -116,12 +116,11 @@ function getCurrentlyPlayingVideo() {
 
 document.addEventListener(
   "keydown",
-  function(e) {
+  function (e) {
     if (
       (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
       e.keyCode == 83
     ) {
-
       let downloadUrl = null;
       if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
         downloadUrl = getCurrentElement[window.location.hostname]();
@@ -133,7 +132,7 @@ document.addEventListener(
       if (downloadUrl !== null) {
         e.preventDefault();
         if (downloadUrl !== "") {
-          chrome.extension.sendMessage({ url: downloadUrl }, function() { });
+          chrome.extension.sendMessage({ url: downloadUrl }, function () {});
         }
       }
     }
