@@ -68,6 +68,17 @@ const getCurrentElement = {
       return imageDiv.getElementsByTagName("img")[0].src;
     }
   },
+  "teddit.net": () => {
+    const post = document.getElementById("post");
+    const imageDiv = post.getElementsByClassName("image")[0];
+    if (imageDiv) {
+      const image = imageDiv.getElementsByTagName("img")[0];
+      if (image) {
+        return image.src;
+      }
+    }
+    return null;
+  },
 };
 
 // Sites, where video is undownloadable by regular means
