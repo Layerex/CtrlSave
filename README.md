@@ -10,7 +10,7 @@ Currently supported sites are:
 - 2ch.hk (images)
 - teddit.net (images)
 
-Also currently played video will be downloaded on any site with simple html5 videos with correct `src` attribute.
+Also currently played video can be downloaded on any site with simple html5 videos with correct `src` attribute.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Also currently played video will be downloaded on any site with simple html5 vid
 - 2ch.hk (изображения)
 - teddit.net (изображения)
 
-Также будет загружено html5 видео с корректным аттрибутом `src`, проигрываемое в данный момент.
+Также может быть загружено html5 видео с корректным аттрибутом `src`, проигрываемое в данный момент.
 
 Почему-то, чтобы сохранить историю из VK, нужно нажать Ctrl+S дважды. Скорее всего, скрипты ВК останавливают событие, вот только не могу понять где.
 
