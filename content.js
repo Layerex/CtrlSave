@@ -91,7 +91,7 @@ const getCurrentElement = {
   },
 };
 
-// Sites, where video is undownloadable by regular means
+// Sites, where videos are undownloadable by regular means
 const videoDownloadBlacklist = ["vk.com"];
 
 function isVideoPlaying(video) {
