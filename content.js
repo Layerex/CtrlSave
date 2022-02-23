@@ -6,6 +6,11 @@ function getElementsByClassNameStart(classNameStart, node = document) {
   return node.querySelectorAll(`[class^="${classNameStart}"]`);
 }
 
+// Get first image in node
+function getImage(node) {
+  return node.getElementsByTagName("img")[0];
+}
+
 // Return values:
 // - null - nothing to download
 // - "" - no manual downloading needed
@@ -21,7 +26,7 @@ const getCurrentElement = {
     }
     const imageDiv = document.getElementById("pv_photo");
     if (imageDiv) {
-      return imageDiv.querySelector("img").src.slice(0);
+      return getImage(imageDiv).src;
     }
     return null;
   },
@@ -39,7 +44,7 @@ const getCurrentElement = {
     for (let i = 0; i < imageDivs.length; ++i) {
       const imageDiv = imageDivs.item(i);
       if (imageDiv) {
-        const image = imageDiv.getElementsByTagName("img")[0];
+        const image = getImage(imageDiv);
         if (image) {
           return image.src.split("?")[0];
         }
@@ -55,14 +60,14 @@ const getCurrentElement = {
         avatarContainer
       );
       if (avatarDiv) {
-        const avatarUrl = avatarDiv.getElementsByTagName("img")[0].src;
+        const avatarUrl = getImage(avatarDiv).src;
         return maxSizeAsset(avatarUrl);
       }
     }
 
     const emojiContainer = getElementByClassNameStart("emojiSection");
     if (emojiContainer) {
-      const emojiUrl = emojiContainer.getElementsByTagName("img")[0].src;
+      const emojiUrl = getImage(emojiContainer).src;
       return maxSizeAsset(emojiUrl);
     }
 
@@ -75,14 +80,14 @@ const getCurrentElement = {
   "2ch.hk": () => {
     const imageDiv = document.getElementById("js-mv-main");
     if (imageDiv) {
-      return imageDiv.getElementsByTagName("img")[0].src;
+      return getImage(imageDiv).src;
     }
   },
   "teddit.net": () => {
     const post = document.getElementById("post");
     const imageDiv = post.getElementsByClassName("image")[0];
     if (imageDiv) {
-      const image = imageDiv.getElementsByTagName("img")[0];
+      const image = getImage(imageDiv);
       if (image) {
         return image.src;
       }
