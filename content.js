@@ -26,6 +26,10 @@ const getCurrentElement = {
     return null;
   },
   "discord.com": () => {
+    function maxSizeAsset(url) {
+      return url.split("?")[0] + "?size=4096";
+    }
+
     // Close sticker dialog bound to Ctrl+S immediately
     getElementByClassNameStart(
       "stickerIcon"
@@ -52,8 +56,14 @@ const getCurrentElement = {
       );
       if (avatarDiv) {
         const avatarUrl = avatarDiv.getElementsByTagName("img")[0].src;
-        return avatarUrl.split("?")[0] + "?size=4096";
+        return maxSizeAsset(avatarUrl);
       }
+    }
+
+    const emojiContainer = getElementByClassNameStart("emojiSection");
+    if (emojiContainer) {
+      const emojiUrl = emojiContainer.getElementsByTagName("img")[0].src;
+      return maxSizeAsset(emojiUrl);
     }
 
     return null;
