@@ -65,7 +65,9 @@ const getCurrentElement = {
       }
     }
 
-    const emojiContainer = getElementByClassNameStart("emojiSection");
+    const emojiContainer =
+      getElementByClassNameStart("emojiSection") ||
+      getElementByClassNameStart("reactionTooltipInner");
     if (emojiContainer) {
       const emojiUrl = getImage(emojiContainer).src;
       return maxSizeAsset(emojiUrl);
