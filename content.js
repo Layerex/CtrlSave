@@ -1,9 +1,9 @@
 function getElementByClassNameStart(classNameStart, node = document) {
-  return node.querySelector(`[class^="${classNameStart}"]`);
+  return node.querySelector(`[class^="${classNameStart}"],[class*=" ${classNameStart}"]`);
 }
 
 function getElementsByClassNameStart(classNameStart, node = document) {
-  return node.querySelectorAll(`[class^="${classNameStart}"]`);
+  return node.querySelectorAll(`[class^="${classNameStart}"],[class*=" ${classNameStart}"]`);
 }
 
 // Get first image in node
