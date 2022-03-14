@@ -40,15 +40,9 @@ const getCurrentElement = {
       "stickerIcon"
     ).parentNode.parentNode.parentNode.click();
 
-    const imageDivs = getElementsByClassNameStart("imageWrapper");
-    for (let i = 0; i < imageDivs.length; ++i) {
-      const imageDiv = imageDivs.item(i);
-      if (imageDiv) {
-        const image = getImage(imageDiv);
-        if (image) {
-          return image.src.split("?")[0];
-        }
-      }
+    const downloadLink = getElementByClassNameStart("downloadLink");
+    if (downloadLink) {
+      return downloadLink.href;
     }
 
     const avatarContainer =
