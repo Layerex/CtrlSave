@@ -39,14 +39,22 @@ const getCurrentElement = {
       return url.split("?")[0] + "?size=4096";
     }
 
+    function maxSizeImage(url) {
+      const widthRegex = new RegExp("[?&]width=[0-9]+");
+      const heightRegex = new RegExp("[?&]height=[0-9]+");
+      return url.replace(widthRegex, "").replace(heightRegex, "");
+    }
+
     // Close sticker dialog bound to Ctrl+S immediately
     getElementByClassNameStart(
       "stickerIcon"
     ).parentNode.parentNode.parentNode.click();
 
-    const downloadLink = getElementByClassNameStart("downloadLink");
-    if (downloadLink) {
-      return downloadLink.href;
+    const backdrop = getElementByClassNameStart("backdrop");
+    if (backdrop) {
+      const currentImageContainer = backdrop.parentNode;
+      const image = getImage(currentImageContainer);
+      return maxSizeImage(image.src);
     }
 
     const avatarContainer =
