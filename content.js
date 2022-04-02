@@ -90,6 +90,10 @@ const getCurrentElement = {
     if (imageDiv) {
       return getImage(imageDiv).src;
     }
+    const videoDiv = document.getElementById("js-mv-player");
+    if (videoDiv) {
+      return videoDiv.getElementsByTagName("source")[0].src;
+    }
   },
   "teddit.net": () => {
     const post = document.getElementById("post");

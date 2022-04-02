@@ -7,7 +7,7 @@ Currently supported sites are:
 - vk.com (images, stories, gifs)
 - discord.com (images, avatars, emojis)
 - element.io (images)
-- 2ch.hk (images)
+- 2ch.hk (images, videos)
 - teddit.net (images)
 
 Also currently played video can be downloaded on any site with simple html5 videos with correct `src` attribute.
@@ -27,7 +27,7 @@ Also currently played video can be downloaded on any site with simple html5 vide
 - vk.com (изображения, истории, гифки)
 - discord.com (изображения, аватарки, эмодзи)
 - element.io (изображения)
-- 2ch.hk (изображения)
+- 2ch.hk (изображения, видео)
 - teddit.net (изображения)
 
 Также может быть загружено html5 видео с корректным аттрибутом `src`, проигрываемое в данный момент.
