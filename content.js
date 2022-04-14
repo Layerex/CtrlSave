@@ -16,7 +16,7 @@ function getImage(node) {
 }
 
 // Return values:
-// - null - nothing to download
+// - undefined - nothing to download
 // - "" - no manual downloading needed
 const getCurrentElement = {
   "vk.com": () => {
@@ -32,7 +32,6 @@ const getCurrentElement = {
     if (imageDiv) {
       return getImage(imageDiv).src;
     }
-    return null;
   },
   "discord.com": () => {
     function maxSizeAsset(url) {
@@ -78,21 +77,19 @@ const getCurrentElement = {
       const emojiUrl = getImage(emojiContainer).src;
       return maxSizeAsset(emojiUrl);
     }
-
-    return null;
   },
   "app.element.io": () => {
     document.getElementsByClassName("mx_ImageView_button_download")[0].click();
     return "";
   },
   "2ch.hk": () => {
-    const imageDiv = document.getElementById("js-mv-main");
-    if (imageDiv) {
-      return getImage(imageDiv).src;
-    }
     const videoDiv = document.getElementById("js-mv-player");
     if (videoDiv) {
       return videoDiv.getElementsByTagName("source")[0].src;
+    }
+    const imageDiv = document.getElementById("js-mv-main");
+    if (imageDiv) {
+      return getImage(imageDiv).src;
     }
   },
   "teddit.net": () => {
@@ -104,7 +101,6 @@ const getCurrentElement = {
         return image.src;
       }
     }
-    return null;
   },
 };
 
@@ -134,11 +130,9 @@ function getCurrentlyPlayingVideo() {
             return source.src;
           }
         }
-        return null;
       }
     }
   }
-  return null;
 }
 
 document.addEventListener(
@@ -148,18 +142,18 @@ document.addEventListener(
       (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
       e.keyCode === 83
     ) {
-      let downloadUrl = null;
+      let downloadUrl;
       if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
         downloadUrl = getCurrentElement[window.location.hostname]();
       }
       if (
-        downloadUrl === null &&
+        downloadUrl === undefined &&
         videoDownloadBlacklist.indexOf(window.location.hostname) === -1
       ) {
         downloadUrl = getCurrentlyPlayingVideo();
       }
 
-      if (downloadUrl !== null) {
+      if (downloadUrl !== undefined) {
         e.preventDefault();
         if (downloadUrl !== "") {
           chrome.extension.sendMessage({ url: downloadUrl }, function () {});
