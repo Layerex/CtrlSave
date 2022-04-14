@@ -152,7 +152,10 @@ document.addEventListener(
       if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
         downloadUrl = getCurrentElement[window.location.hostname]();
       }
-      if (downloadUrl === null) {
+      if (
+        downloadUrl === null &&
+        videoDownloadBlacklist.indexOf(window.location.hostname) === -1
+      ) {
         downloadUrl = getCurrentlyPlayingVideo();
       }
 
