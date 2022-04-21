@@ -10,6 +10,22 @@ function getElementsByClassNameStart(classNameStart, node = document) {
   );
 }
 
+function getElementByXpath(path) {
+  return document.evaluate(
+    path,
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue;
+}
+
+function getBackgroundImage(style) {
+  const value = style.backgroundImage;
+  const urlRegex = /url\("(.*)"\)/;
+  return value.match(urlRegex)[1];
+}
+
 // Get first image in node
 function getImage(node) {
   return node.getElementsByTagName("img")[0];
@@ -101,6 +117,15 @@ const getCurrentElement = {
         return image.src;
       }
     }
+  },
+  "web.skype.com": () => {
+    const imageDiv = getElementByXpath(
+      "/html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div/div/div/div[2]/div/div"
+    );
+    return getBackgroundImage(imageDiv.style).replace(
+      "mobile_save",
+      "fullsize"
+    );
   },
 };
 
