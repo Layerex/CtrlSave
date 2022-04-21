@@ -119,8 +119,11 @@ const getCurrentElement = {
     }
   },
   "web.skype.com": () => {
-    const imageDiv = getElementByXpath(
-      "/html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div/div/div/div[2]/div/div"
+    // const imageDiv = getElementByXpath(
+    //   "/html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div/div/div/div[2]/div/div"
+    // );
+    const imageDiv = document.querySelector(
+      `[style^='position: absolute; overflow: visible; background-color: transparent; flex-grow: 0; flex-shrink: 0; inset: 0px; align-items: stretch; background-position: center center; background-repeat: no-repeat; background-image: url("https://api.asm.skype.com/v1/objects/'][style$='/views/imgpsh_mobile_save_anim"); background-size: contain; border-style: none; display: flex;']`
     );
     return getBackgroundImage(imageDiv.style).replace(
       "mobile_save",
