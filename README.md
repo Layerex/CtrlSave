@@ -5,7 +5,7 @@ Chrome extension for saving images from various sites by pressing Ctrl+S lightly
 Currently supported sites are:
 
 - vk.com (images, stories, gifs)
-- discord.com (images, avatars, emojis)
+- discord.com (images, gifs, avatars, emojis)
 - element.io (images)
 - 2ch.hk (images, videos)
 - teddit.net (images)
@@ -26,7 +26,7 @@ Also currently played video can be downloaded on any site with simple html5 vide
 На данный момент поддерживаются:
 
 - vk.com (изображения, истории, гифки)
-- discord.com (изображения, аватарки, эмодзи)
+- discord.com (изображения, гифки, аватарки, эмодзи)
 - element.io (изображения)
 - 2ch.hk (изображения, видео)
 - teddit.net (изображения)

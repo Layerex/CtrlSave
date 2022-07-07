@@ -31,6 +31,11 @@ function getImage(node) {
   return node.getElementsByTagName("img")[0];
 }
 
+// get first video in node
+function getVideo(node) {
+  return node.getElementsByTagName("video")[0];
+}
+
 // Return values:
 // - undefined - nothing to download
 // - "" - no manual downloading needed
@@ -67,9 +72,16 @@ const getCurrentElement = {
 
     const backdrop = getElementByClassNameStart("backdrop");
     if (backdrop) {
-      const currentImageContainer = backdrop.parentNode;
-      const image = getImage(currentImageContainer);
-      return maxSizeImage(image.src);
+      const currentContainer = backdrop.parentNode;
+      const video = getVideo(currentContainer);
+      if (video) {
+        return video.src;
+      }
+      const image = getImage(currentContainer);
+      if (image) {
+        return maxSizeImage(image.src);
+      }
+      return undefined;
     }
 
     const avatarContainer =
