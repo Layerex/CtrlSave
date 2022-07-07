@@ -132,7 +132,7 @@ const getCurrentElement = {
   },
 };
 
-// Sites, where videos are undownloadable by regular means
+// Sites, where videos are undownloadable or not downloaded by regular means
 const videoDownloadBlacklist = ["vk.com", "2ch.hk"];
 
 function isVideoPlaying(video) {
