@@ -39,7 +39,7 @@ function getVideo(node) {
 // Return values:
 // - undefined - nothing to download
 // - "" - no manual downloading needed
-const getCurrentElement = {
+const getters = {
   "vk.com": () => {
     const storyVideo = document.getElementsByClassName("stories_video")[0];
     if (storyVideo) {
@@ -144,6 +144,31 @@ const getCurrentElement = {
   },
 };
 
+const yandex = () => {
+  const otherSizesButton = document.getElementsByClassName(
+    "MMViewerButtons-ImageSizes"
+  )[0];
+  otherSizesButton.click(); // open list
+  const sizeSelector = document.getElementsByClassName(
+    "MMViewerButtons-ImageSizesPopup"
+  )[0];
+  const resolutions = sizeSelector.getElementsByClassName(
+    "MMViewerButtons-ImageSizesListItem"
+  );
+  otherSizesButton.click(); // close list
+  return resolutions[0].href;
+};
+
+function getDownloadUrl(hostname) {
+  if (getters.hasOwnProperty(hostname)) {
+    return getters[hostname]();
+  } else {
+    if (hostname.split(".", 1)[0] === "yandex") {
+      return yandex();
+    }
+  }
+}
+
 // Sites, where videos are undownloadable or not downloaded by regular means
 const videoDownloadBlacklist = ["vk.com", "2ch.hk"];
 
@@ -182,10 +207,7 @@ document.addEventListener(
       (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
       e.keyCode === 83
     ) {
-      let downloadUrl;
-      if (getCurrentElement.hasOwnProperty(window.location.hostname)) {
-        downloadUrl = getCurrentElement[window.location.hostname]();
-      }
+      let downloadUrl = getDownloadUrl(window.location.hostname);
       if (
         downloadUrl === undefined &&
         videoDownloadBlacklist.indexOf(window.location.hostname) === -1

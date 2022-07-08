@@ -10,6 +10,7 @@ Currently supported sites are:
 - 2ch.hk (images, videos)
 - teddit.net (images)
 - web.skype.com (images)
+- yandex (images)
 
 Also currently played video can be downloaded on any site with simple html5 videos with correct `src` attribute.
 
@@ -31,6 +32,7 @@ Also currently played video can be downloaded on any site with simple html5 vide
 - 2ch.hk (изображения, видео)
 - teddit.net (изображения)
 - web.skype.com (изображения)
+- yandex (изображения)
 
 Также может быть загружено html5 видео с корректным аттрибутом `src`, проигрываемое в данный момент.
 
