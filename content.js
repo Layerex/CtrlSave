@@ -148,15 +148,20 @@ const yandex = () => {
   const otherSizesButton = document.getElementsByClassName(
     "MMViewerButtons-ImageSizes"
   )[0];
-  otherSizesButton.click(); // open list
-  const sizeSelector = document.getElementsByClassName(
-    "MMViewerButtons-ImageSizesPopup"
-  )[0];
-  const resolutions = sizeSelector.getElementsByClassName(
-    "MMViewerButtons-ImageSizesListItem"
-  );
-  otherSizesButton.click(); // close list
-  return resolutions[0].href;
+  if (otherSizesButton) {
+    otherSizesButton.click(); // open list
+    const sizeSelector = document.getElementsByClassName(
+      "MMViewerButtons-ImageSizesPopup"
+    )[0];
+    const resolutions = sizeSelector.getElementsByClassName(
+      "MMViewerButtons-ImageSizesListItem"
+    );
+    otherSizesButton.click(); // close list
+    return resolutions[0].href;
+  } else {
+    const downloadButton = document.getElementsByClassName("MMViewerButtons-OpenImage")[0];
+    return downloadButton.href
+  }
 };
 
 function getDownloadUrl(hostname) {
