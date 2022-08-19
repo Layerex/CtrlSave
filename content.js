@@ -20,8 +20,8 @@ function getElementByXpath(path) {
   ).singleNodeValue;
 }
 
-function getBackgroundImage(style) {
-  const value = style.backgroundImage;
+function getBackgroundImage(node) {
+  const value = node.style.backgroundImage;
   const urlRegex = /url\("(.*)"\)/;
   return value.match(urlRegex)[1];
 }
@@ -137,7 +137,7 @@ const getters = {
     const imageDiv = document.querySelector(
       `[style^='position: absolute; overflow: visible; background-color: transparent; flex-grow: 0; flex-shrink: 0; inset: 0px; align-items: stretch; background-position: center center; background-repeat: no-repeat; background-image: url("https://api.asm.skype.com/v1/objects/'][style$='/views/imgpsh_mobile_save_anim"); background-size: contain; border-style: none; display: flex;']`
     );
-    return getBackgroundImage(imageDiv.style).replace(
+    return getBackgroundImage(imageDiv).replace(
       "mobile_save",
       "fullsize"
     );
