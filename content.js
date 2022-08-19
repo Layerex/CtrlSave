@@ -45,6 +45,12 @@ const getters = {
     if (storyVideo) {
       return storyVideo.src;
     }
+
+    const storyPhoto = document.getElementsByClassName("stories_photo")[0];
+    if (storyPhoto) {
+      return getBackgroundImage(storyPhoto);
+    }
+
     const gifVideo = document.getElementsByClassName("pages_gif_img")[0];
     if (gifVideo) {
       return gifVideo.src;
