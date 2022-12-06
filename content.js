@@ -151,6 +151,13 @@ const getters = {
 };
 
 const yandex = () => {
+  const sizeWidth = (button) => {
+    return +button.textContent.split("×")[0];
+  };
+
+  const currentSizeButton = document.getElementsByClassName(
+    "MMViewerButtons-OpenImage"
+  )[0];
   const otherSizesButton = document.getElementsByClassName(
     "MMViewerButtons-ImageSizes"
   )[0];
@@ -163,10 +170,17 @@ const yandex = () => {
       "OpenImageButton-ListItem"
     );
     otherSizesButton.click(); // close list
-    return resolutions[0].href;
+    const maxOtherSizeButton = otherSizeButtons[0];
+
+    const currentSize = sizeWidth(otherSizesButton);
+    const maxOtherSize = sizeWidth(maxOtherSizeButton);
+    if (currentSize > maxOtherSize) {
+      return currentSizeButton.href;
+    } else {
+      return maxOtherSizeButton.href;
+    }
   } else {
-    const downloadButton = document.getElementsByClassName("MMViewerButtons-OpenImage")[0];
-    return downloadButton.href
+    return currentSizeButton.href;
   }
 };
 
