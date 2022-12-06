@@ -157,10 +157,10 @@ const yandex = () => {
   if (otherSizesButton) {
     otherSizesButton.click(); // open list
     const sizeSelector = document.getElementsByClassName(
-      "MMViewerButtons-ImageSizesPopup"
+      "OpenImageButton-Popup"
     )[0];
-    const resolutions = sizeSelector.getElementsByClassName(
-      "MMViewerButtons-ImageSizesListItem"
+    const otherSizeButtons = sizeSelector.getElementsByClassName(
+      "OpenImageButton-ListItem"
     );
     otherSizesButton.click(); // close list
     return resolutions[0].href;
