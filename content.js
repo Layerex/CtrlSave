@@ -60,7 +60,7 @@ const getters = {
       return getImage(imageDiv).src;
     }
   },
-  "discord.com": () => {
+  "discord.com": (alt) => {
     function maxSizeAsset(url) {
       return url.split("?")[0] + "?size=4096";
     }
@@ -78,6 +78,14 @@ const getters = {
         "stickerIcon"
       ).parentNode.parentNode.parentNode.click();
     } catch {}
+
+    if (alt) {
+      const bannerDiv = getElementByClassNameStart("bannerPremium");
+      if (bannerDiv) {
+        const bannerUrl = getBackgroundImage(bannerDiv);
+        return maxSizeAsset(bannerUrl);
+      }
+    }
 
     const backdrop = getElementByClassNameStart("backdrop");
     if (backdrop) {
