@@ -184,9 +184,9 @@ const yandex = () => {
   }
 };
 
-function getDownloadUrl(hostname) {
+function getDownloadUrl(hostname, alt) {
   if (getters.hasOwnProperty(hostname)) {
-    return getters[hostname]();
+    return getters[hostname](alt);
   } else {
     if (hostname.split(".", 1)[0] === "yandex") {
       return yandex();
@@ -232,7 +232,7 @@ document.addEventListener(
       (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
       e.keyCode === 83
     ) {
-      let downloadUrl = getDownloadUrl(window.location.hostname);
+      let downloadUrl = getDownloadUrl(window.location.hostname, e.shiftKey);
       if (
         downloadUrl === undefined &&
         videoDownloadBlacklist.indexOf(window.location.hostname) === -1
