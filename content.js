@@ -72,9 +72,12 @@ const getters = {
     }
 
     // Close sticker dialog bound to Ctrl+S immediately
-    getElementByClassNameStart(
-      "stickerIcon"
-    ).parentNode.parentNode.parentNode.click();
+    // When in channels user can't send messages to it doesn't open
+    try {
+      getElementByClassNameStart(
+        "stickerIcon"
+      ).parentNode.parentNode.parentNode.click();
+    } catch {}
 
     const backdrop = getElementByClassNameStart("backdrop");
     if (backdrop) {
