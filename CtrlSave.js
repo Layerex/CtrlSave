@@ -263,6 +263,7 @@ document.addEventListener(
         if (downloadUrl !== "") {
           const downloadUrlParts = downloadUrl.split("/")
           const name = downloadUrlParts[downloadUrlParts.length - 1].split("?")[0]
+          console.log("CtrlSave: Downloading", downloadUrl)
           GM_download(downloadUrl, name);
         }
       }
