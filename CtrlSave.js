@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name        CtrlSave
+// @namespace   Violentmonkey Scripts
+// @match       *://*/*
+// @grant       GM_download
+// @version     1.0
+// @author      Layerex
+// @description Save images from various sites by pressing Ctrl+S.
+// ==/UserScript==
+
 function getElementByClassNameStart(classNameStart, node = document) {
   return node.querySelector(
     `[class^="${classNameStart}"],[class*=" ${classNameStart}"]`
@@ -251,7 +261,9 @@ document.addEventListener(
       if (downloadUrl !== undefined) {
         e.preventDefault();
         if (downloadUrl !== "") {
-          chrome.extension.sendMessage({ url: downloadUrl }, function () {});
+          const downloadUrlParts = downloadUrl.split("/")
+          const name = downloadUrlParts[downloadUrlParts.length - 1].split("?")[0]
+          GM_download(downloadUrl, name);
         }
       }
     }
