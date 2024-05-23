@@ -72,7 +72,8 @@ const getters = {
   },
   "discord.com": (alt) => {
     function maxSizeAsset(url) {
-      return url.split("?")[0] + "?size=4096";
+      const sizeRegex = new RegExp("[?&]size=[0-9]+");
+      return url.replace(sizeRegex, "?size=4096")
     }
 
     function maxSizeImage(url) {
@@ -106,7 +107,7 @@ const getters = {
       }
       const image = getImage(currentContainer);
       if (image) {
-        return maxSizeImage(image.src);
+        return maxSizeAsset(maxSizeImage(image.src));
       }
       return undefined;
     }
